@@ -1,15 +1,15 @@
 var config = {
-	"title": "Map",
+	"title": "Bootleaf template map",
 	"start": {
 		// "maxZoom": 16,
-		"center": [51.531560, -0.156757],
+		"center": [38.203,-99.799],
 		"zoom": 4,
 		"attributionControl": true,
 		"zoomControl": false
 	},
 	"about": {
-		"title": "About the map",
-		"contents": "<p>This map is designed to map human and nonhuman presence across a Victorian landscape in order to allow users to explore how Victorians defined, challenged, and altered what it meant to be human against a nonhuman backdrop. Such humanist ideals can include, but are not limited to, issues of race, class, gender, sexuality, and ability, and how Victorian's perceived these ideals in the precarious zones of nonhuman entanglement and proximity. <br> Using this open source version of Bootleaf, created by Brian McBride and improved by IAG-geo led by Stephen Lead, users can use this map and the associated query widget to target any text or attribute designated within the map.</p>"
+		"title": "Bootleaf application template",
+		"contents": "<p>This is an open-source version of the excellent <a href='https://github.com/bmcbride/bootleaf'>Bootleaf map </a>started by Bryan McBride.</p><p>It's designed for rapid web map development. See <a href='https://github.com/iag-geo/bootleaf'>https://github.com/iag-geo/bootleaf</a> for more information.</p><p>Chage this message in the config file</p>"
 	},
 	"controls": {
 		"zoom": {
@@ -39,10 +39,10 @@ var config = {
 			"places": [
 				{
 				"latlng": [
-					51.531209, -0.157110
+					40.7916, -73.9924
 				],
 				"zoom": 12,
-				"name": "Regents Park",
+				"name": "Manhattan",
 				"id": "a148fa354ba3",
 				"editable": true,
 				"removable": true
@@ -53,7 +53,7 @@ var config = {
 	// "activeTool": "identify", // options are identify/coordinates/queryWidget
 	"basemaps": ['esriGray', 'esriDarkGray', 'esriStreets', 'OpenStreetMap', "Aerial"],
 	"bing_key": "enter your Bing Maps key",
-	//"mapboxKey": "pk.eyJ1IjoiYnVybmxleTIiLCJhIjoiY2s1aWpucm13MDlrcTN0cDRsMHhpaTdzZiJ9.hYC-K6YuQGmhlzU9ERFlQA",
+	"mapboxKey": "enter your MapBox key",
 	// "defaultIcon": {
 	// 	"imagePath": "http://leafletjs.com/examples/custom-icons/",
 	// 	"iconUrl": "leaf-green.png",
@@ -66,11 +66,19 @@ var config = {
 	// },
 	"tocCategories": [
 		{
+			"name": "GeoJSON layers",
+			"layers": ["theatres", "museums", "us_density"]
+		},
+		{
 			"name": "ArcGIS Layers",
-			"layers" : ["Puck_Map"/*, "Hound", "Flush", "Vanity_Fair"*/]
-		},	
-			],
-	
+			"layers" : ["trees", "counties", "railways", "us_states"]
+		},
+		{
+			"name": "WMS/WFS layers",
+			"layers": ["US_population", "countries"],
+			"exclusive": false
+		}
+	],
 	"projections": [
 		{4269: '+proj=longlat +ellps=GRS80 +datum=NAD83 +no_defs '}
 	],
@@ -84,16 +92,16 @@ var config = {
 		"stroke": true
 	},
 	"layers": [
-/*	{
-    "id": "puck",
-    "name": "Puck",
+	{
+    "id": "theatres",
+    "name": "Theatres",
     "type": "geoJSON",
     "cluster": true,
     "showCoverageOnHover": false,
     "minZoom": 12,
-    "url": "./data/puck.geojson",
+    "url": "./data/theatres.geojson",
     "icon": {
-        "iconUrl": "./img/dog.png",
+        "iconUrl": "./img/theater.png",
         "iconSize": [24,28]
     },
     "style": {
@@ -106,105 +114,82 @@ var config = {
     "color": '#727272',
     },
 	  "visible": false,
-	  "label": {
-	  	"name": "Character",
-	  "minZoom": 12
-	   }
-		
+	  // "label": {
+	  // 	"name": "NAME",
+	  // 	"minZoom": 14
+	  // }
 	},
-	
-		{
-    "id": "flush",
-    "name": "Flush",
+	{
+    "id": "museums",
     "type": "geoJSON",
     "cluster": true,
     "showCoverageOnHover": false,
     "minZoom": 12,
-    "url": "./data/flush.geojson",
-    "icon": {
-        "iconUrl": "./img/dog.png",
-        "iconSize": [24,28]
-    },
+    "url": "./data/museums.geojson",
     "style": {
-    "stroke": true,
-    "fillColor": "#00FFFF",
-    "fillOpacity": 0.5,
-    "radius": 10,
-    "weight": 0.5,
-    "opacity": 1,
-    "color": '#727272',
-    },
-	  "visible": false,
-	  "label": {
-	  	"name": "Character",
-		  
-	  	"minZoom": 12
-	  }
-	},
-		{
-    "id": "hound",
-    "name": "Hound",
-    "type": "geoJSON",
-    "cluster": true,
-    "showCoverageOnHover": false,
-    "minZoom": 12,
-    "url": "./data/hound.geojson",
-    "icon": {
-        "iconUrl": "./img/sherlock.png",
-        "iconSize": [24,28]
-    },
-    "style": {
-    "stroke": true,
-    "fillColor": "#00FFFF",
-    "fillOpacity": 0.5,
-    "radius": 10,
-    "weight": 0.5,
-    "opacity": 1,
-    "color": '#727272',
-    },
-	  "visible": false,
-	  "label": {
-	  	"name": "Character",
-	  	"minZoom": 12
-	   }
-	},
-			{
-    "id": "vanityfair",
-    "name": "Vanity Fair",
-    "type": "geoJSON",
-    "cluster": true,
-    "showCoverageOnHover": false,
-    "minZoom": 12,
-    "url": "./data/vanityfair.geojson",
-    "icon": {
-        "iconUrl": "./img/moneybags.png",
-        "iconSize": [24,28]
-    },
-    "style": {
-    "stroke": true,
-    "fillColor": "#00FFFF",
-    "fillOpacity": 0.5,
-    "radius": 10,
-    "weight": 0.5,
-    "opacity": 1,
-    "color": '#727272',
-    },
-	  "visible": false,
-	  "label": {
-	  	"name": "Character",
-	  "minZoom": 12
-	   }
-	},
-		{
-    "id": "VF_Species",
-    "name": "VF Species",
-    "type": "geoJSON",
-    "cluster": true,
-    "showCoverageOnHover": false,
-    "minZoom": 12,
-    "url": "./data/VF_Species.geojson",
+        "stroke": true,
+        "fillColor": "#00FFFF",
+        "fillOpacity": 0.5,
+        "radius": 10,
+        "weight": 0.5,
+        "opacity": 1,
+        "color": '#727272'
+		  },
+		  "icon": {
+		      "iconUrl": "./img/museum.png",
+		      "iconSize": [24,28]
+		  },
+		  "visible": false,
+		  // "label": {
+		  // 	"name": "NAME",
+		  // 	"minZoom": 14
+		  // }
 		},
-*/
+		{
+			"id": "trees",
+			"name": "Heritage trees (feature)",
+			"type": "agsFeatureLayer",
+			"cluster": true,
+			"showCoverageOnHover": false,
+			"removeOutsideVisibleBounds": true,
+			"url": "https://services.arcgis.com/rOo16HdIMeOBI4Mb/arcgis/rest/services/Heritage_Trees_Portland/FeatureServer/0",
+			"popup": true,
+			"tooltipField": "COMMON_NAM",
+			"outFields": [
+				{"type": "OID",	"name": "FID"},
+				{"name": "COMMON_NAM", "alias": "Common Name"},
+				{"name": "SCIENTIFIC", "alias": "Scientific Name"},
+				{"name": "ADDRESS", "alias": "Address"},
+				{"name": "HEIGHT", "alias": "Height (m)", "decimals": 2},
+				{"name": "CIRCUMFERE", "alias": "Circumerence (m)"},
+				{"name": "YEAR", "alias": "Year"},
+				{"name": "OWNER", "alias": "Owner"},
+				{"name": "NOTES", "alias": "Notes"}
+			],
+			"visible": true,
+			"queryWidget": {
+				"queries" : [
+					{"name": "COMMON_NAM", "alias": "Common name", "defaultOperator": "starts with"},
+					{"name": "SCIENTIFIC", "alias": "Scientific name"}
+				],
+				"outFields": [
+					{"name": "COMMON_NAM", "alias": "Name"},
+					{"name": "SCIENTIFIC", "alias": "Sci. name"},
+					{"name": "HEIGHT", hidden: true},
+					{"name": "DIAMETER", "hidden": true}
+				]
+			},
+			"style": {
+				"stroke": true,
+		    "fillColor": "#00FFFF",
+		    "fillOpacity": 0.5,
+		    "radius": 10,
+		    "weight": 0.5,
+		    "opacity": 1,
+		    "color": '#727272'
+		  },
+			"minZoom": 2
+		},
 		{
 			"id": "Puck_Map",
 			"name": "Puck Attributes (feature)",
@@ -246,110 +231,130 @@ var config = {
 		    "color": '#727272'
 		  },
 			"minZoom": 2
-		}/*,
-		{
-			"id": "Hound",
-			"name": "Hound Attributes (feature)",
-			"type": "agsFeatureLayer",
-			"cluster": true,
-			"showCoverageOnHover": false,
-			"removeOutsideVisibleBounds": true,
-			"url": "https://services.arcgis.com/uHAHKfH1Z5ye1Oe0/arcgis/rest/services/Hounds/FeatureServer/0",
-			"popup": true,
-			"outFields": [
-				{"type": "OID",	"name": "FID"},
-				{"name": "Title"},
-				{"name": "Author"},
-				{"name": "Character"},
-				{"name": "Species"},
-				{"name": "Gender"},
-				{"name": "Breed_Race"},
-				{"name": "Class"},
-				{"name": "Relationship"},
-				{"name": "Occupation"},
-				{"name": "Color"},
-				{"name": "Location"},
-				{"name": "Assumed_Location", "alias": "Assumed Location"},
-				{"name": "Longitude"},
-				{"name": "Latitude"},
-				{"name": "Degrees"},
-				{"name": "Longevity"},
-				{"name": "Description"},
-				{"name": "Page_Number", "alias": "Page Number"},
-				{"name": "Marginalized_Associates", "alias": "Marginalized Associates"},
-			],
-				
-			"visible": true,
-			"queryWidget": {
-				"queries" : [
-					{"name": "Title", "defaultOperator": "starts with"},
-					{"name": "Character"}
-				],
-				"outFields": [
-					{"name": "Title"},
-					{"name": "Author"},
-					{"name": "Character"},
-					{"name": "Species"}
-				]
-			},
-			"style": {
-				"stroke": true,
-		    "fillColor": "#00FFFF",
-		    "fillOpacity": 0.5,
-		    "radius": 10,
-		    "weight": 0.5,
-		    "opacity": 1,
-		    "color": '#727272'
-		  },
-			"minZoom": 2
 		},
-	
-			{
-			"id": "Vanity_Fair",
-			"name": "Vanity Fair Attributes (feature)",
-			"type": "agsFeatureLayer",
-			"cluster": false,
-			"showCoverageOnHover": false,
-			"removeOutsideVisibleBounds": true,
-			"url": "https://services.arcgis.com/uHAHKfH1Z5ye1Oe0/arcgis/rest/services/Vanity_Fair/FeatureServer/0",
-			"popup": true,
-			"tooltipField": "Character",
-			"outFields": [
-				{"type": "OID",	"name": "FID"},
-				{"name": "Character", "alias": "character"},
-				{"name": "Species", "alias": "species"},
-				{"name": "Location", "alias": "location"},
-				{"name": "Class", "alias": "class"},
-				{"name": "Gender", "alias": "gender"},
-				{"name": "Author", "alias": "author"},
-				{"name": "Breed_Race", "alias": "race"},
-			],
+		{
+			"id": "counties",
+			"name": "Counties (dynamic)",
+			"type": "agsDynamicLayer",
+			"url": "https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Demographics/ESRI_Census_USA/MapServer/",
+			"layers": [3],
+			"minZoom": 6,
+			"format": 'png24',
+			"transparent": true,
+			//"layerDefs": {3:"POP2000 > 1000000"},
+			"useCors": false,
 			"visible": true,
+			"identify": {
+				"layerLabel": "Census counties",
+				"layerName": "Coarse Counties",
+				"primaryField": "NAME",
+				"outFields": [
+					{"name": "STATE_NAME", "alias": "State"},
+					{"name": "POP2007", "alias": "Population"}
+				],
+				"maxAllowableOffset": 0.001
+			},
 			"queryWidget": {
 				"queries" : [
-					{"name": "Character", "alias": "Character", "defaultOperator": "starts with"},
-					{"name": "Species", "alias": "species"}
+					{"name": "NAME", "alias": "County name"},
+					{"name": "STATE_NAME", "alias": "State name"},
+					{"name": "POP2000", "alias": "Population", "type": "numeric"}
 				],
 				"outFields": [
-					{"name": "Character", "alias": "character"},
-					{"name": "Species", "alias": "species"},
-					{"name": "HEIGHT", hidden: true},
-					{"name": "DIAMETER", "hidden": true}
+					{"name": "NAME", "alias": "County name"},
+					{"name": "STATE_NAME", "alias": "State name"},
+					{"name": "POP2000", "alias": "Population", "thousands": true, "hidden": true}
+				],
+				"layerIndex": 3,
+				"maxAllowableOffset": 0.001
+			}
+		},
+		{
+			"id": "us_states",
+			"name": "US States (dynamic)",
+			"type": "agsDynamicLayer",
+			"url": "https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Demographics/ESRI_Census_USA/MapServer/",
+			"layers": [5],
+			"format": 'png24',
+			"transparent": true,
+			// "layerDefs": {3:"POP2000 > 1000000"},
+			"useCors": false,
+			"visible": true,
+			"identify": {
+				"layerName": "states",
+				"primaryField": "STATE_NAME",
+				"outFields": [
+					{"name": "STATE_NAME", "alias": "State"},
+					{"name": "POP2007", "alias": "Population", "thousands": true},
+					{"name": "POP07_SQMI", "alias": "Population density", "decimals": 0}
+				],
+				"maxAllowableOffset": 0.001
+			},
+			"queryWidget": {
+				"queries" : [
+					{"name": "STATE_NAME", "alias": "State name"},
+					{"name": "POP2000", "alias": "Population", "type": "numeric"}
+				],
+				"outFields": [
+					{"name": "STATE_NAME", "alias": "State name"},
+					{"name": "POP2000", "alias": "Population", "thousands": true},
+					{"name": "MALES", "alias": "No. Males", "thousands": true},
+					{"name": "FEMALES", "alias": "No. Females", "thousands": true},
+					{"name": "SQMI", "alias": "Area (sqmi)", "thousands": true, "decimals": 1}
+				],
+				"layerIndex": 5,
+				"maxAllowableOffset": 0.001,
+			},
+			"maxZoom": 10,
+		},
+		{
+			"id": "US_population",
+			"name": "US Population (WMS)",
+			"type": "wmsTiledLayer",
+			"url": "https://demo.geo-solutions.it/geoserver/wfs",
+			"layers": "topp:states",
+			'EPSG': 4326,
+      "visible": false,
+      "format": 'image/png',
+      "transparent": true,
+      "geomField": "the_geom",
+      "queryWidget": {
+				"queries" : [
+					{"name": "STATE_NAME", "alias": "Name"},
+					{"name": "STATE_ABBR", "alias": "Abbreviation"}
 				]
 			},
-			"style": {
-				"stroke": true,
-		    "fillColor": "#00FFFF",
-		    "fillOpacity": 0.5,
-		    "radius": 10,
-		    "weight": 0.5,
-		    "opacity": 1,
-		    "color": '#727272'
-		  },
-			"minZoom": 2
+			"identify": {
+				"layerName": "states",
+				"buffer": 10,
+				"outFields": [
+					{"name": "STATE_NAME", "alias": "Name"},
+					{"name": "STATE_ABBR", "alias": "Abbreviation"},
+					{"name": "FAMILIES", "alias": "Num families", "thousands": true}
+				]
+			},
+			"outFields": [
+				{"name": "STATE_NAME", "alias": "Name X"},
+				{"name": "STATE_ABBR", "alias": "Abbreviation"},
+				{"name": "FAMILIES", "alias": "No. Families", "thousands": true},
+				{"name": "LAND_KM", "alias": "sq. km", "thousands": true, "decimals": 1, "hidden": true},
+			]
+		},
+		{
+			"id": "countries",
+			"name": "World countries (WFS)",
+			"type": "WFS",
+			"url": "https://demo.boundlessgeo.com/geoserver/opengeo/wfs",
+			"typeName": "opengeo:countries",
+      "visible": false,
+      "popup": true,
+      "geomField": "the_geom",
+      "outFields": [
+      	{"name": "name", "alias": "Name"},
+      	{"name": "economy", "alias": "Economy"},
+      	{"name": "income_grp", "alias": "Income Group"},
+      	{"name": "pop_est", "alias": "Population estimate", "thousands": true}
+      ]
 		}
-			
-*/		
-
 	]
 }
