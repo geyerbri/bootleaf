@@ -3,7 +3,7 @@ var config = {
 	"start": {
 		// "maxZoom": 16,
 		"center": [38.203,-99.799],
-		"zoom": 4,
+		"zoom": 2,
 		"attributionControl": true,
 		"zoomControl": false
 	},
@@ -71,7 +71,7 @@ var config = {
 		},
 		{
 			"name": "ArcGIS Layers",
-			"layers" : ["trees", "counties", "railways", "us_states"]
+			"layers" : ["trees", "counties", "Puck_Map", "us_states"]
 		},
 		{
 			"name": "WMS/WFS layers",
@@ -188,13 +188,13 @@ var config = {
 		    "opacity": 1,
 		    "color": '#727272'
 		  },
-			"minZoom": 7
+			"minZoom": 2
 		},
 		{
 			"id": "Puck_Map",
 			"name": "Puck Attributes (feature)",
 			"type": "agsFeatureLayer",
-			"cluster": false,
+			"cluster": true,
 			"showCoverageOnHover": false,
 			"removeOutsideVisibleBounds": true,
 			"url": "https://services.arcgis.com/uHAHKfH1Z5ye1Oe0/arcgis/rest/services/PuckMap/FeatureServer/0",
@@ -222,7 +222,6 @@ var config = {
 				]
 			},
 			"style": {
-				"url": "./data/puck.geojson",
 				"icon": {
 					"iconUrl": "./img/dog.png",
 					"iconSize": [24,28]
