@@ -3,7 +3,7 @@ var config = {
 	"start": {
 		// "maxZoom": 16,
 		"center": [38.203,-99.799],
-		"zoom": 2,
+		"zoom": 4,
 		"attributionControl": true,
 		"zoomControl": false
 	},
@@ -71,7 +71,7 @@ var config = {
 		},
 		{
 			"name": "ArcGIS Layers",
-			"layers" : ["trees", "counties", "Puck_Map", "us_states"]
+			"layers" : ["trees", "counties", "railways", "us_states"]
 		},
 		{
 			"name": "WMS/WFS layers",
@@ -188,49 +188,35 @@ var config = {
 		    "opacity": 1,
 		    "color": '#727272'
 		  },
-			"minZoom": 2
+			"minZoom": 7
 		},
 		{
-			"id": "Puck_Map",
-			"name": "Puck Attributes (feature)",
+			"id": "railways",
+			"name": "USA Railways (feature)",
 			"type": "agsFeatureLayer",
-			"cluster": true,
-			"showCoverageOnHover": false,
-			"removeOutsideVisibleBounds": true,
-			"url": "https://services.arcgis.com/uHAHKfH1Z5ye1Oe0/arcgis/rest/services/PuckMap/FeatureServer/0",
+			"url": "https://services.arcgis.com/rOo16HdIMeOBI4Mb/ArcGIS/rest/services/USA_Rail_Network/FeatureServer/0",
+			"visible": false,
+			"minZoom": 12,
+			"useCors": false,
 			"popup": true,
-			"tooltipField": "Species",
-			"outFields": [
-				{"type": "OID",	"name": "FID"},
-				{"name": "Character", "alias": "Character"},
-				{"name": "Species", "alias": "Species"},
-				{"name": "Location", "alias": "Location"},
-				{"name": "Class", "alias": "Class"},
-				{"name": "Gender", "alias": "Gender"},
-				{"name": "Author", "alias": "Author"},
-				{"name": "Breed_Race", "alias": "Race"},
-			],
-			"visible": true,
-			"queryWidget": {
-				"queries" : [
-					{"name": "Character", "alias": "Character", "defaultOperator": "starts with"},
-					{"name": "Species", "alias": "Species"}
-				],
-				"outFields": [
-					{"name": "Character", "alias": "Character"},
-					{"name": "Species", "alias": "Species"},
-				]
-			},
+			"fields": ["FID","RROWNER1","RR_CLASS", "RAILROAD", "ABANDONED"],
 			"style": {
 				"stroke": true,
-		    "fillColor": "#00FFFF",
-		    "fillOpacity": 0.5,
 		    "radius": 10,
-		    "weight": 0.5,
+		    "weight": 2,
 		    "opacity": 1,
-		    "color": '#727272'
+		    "color": "#FF0000"
 		  },
-			"minZoom": 2
+			"queryWidget": {
+				"queries" : [
+					{"name": "RAILROAD", "alias": "Name"}
+				],
+				"outFields": [
+					{"name": "RAILROAD", "alias": "Name"},
+					{"name": "RROWNER1", "alias": "Owner"}
+				],
+				"maxAllowableOffset": 10
+			}
 		},
 		{
 			"id": "counties",
