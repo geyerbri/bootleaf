@@ -180,14 +180,19 @@ var config = {
 				]
 			},
 			"style": {
+				"url": "./data/puck.geojson",
+				"icon": {
+					"iconUrl": "./img/dog.png",
+					"iconSize": [24,28]
+				},
 				"stroke": true,
-		    "fillColor": "#00FFFF",
-		    "fillOpacity": 0.5,
-		    "radius": 10,
-		    "weight": 0.5,
-		    "opacity": 1,
-		    "color": '#727272'
-		  },
+				"fillColor": "#00FFFF",
+				"fillOpacity": 0.5,
+				"radius": 10,
+				"weight": 0.5,
+				"opacity": 1,
+				"color": '#727272'
+			},
 			"minZoom": 7
 		},
 		{
