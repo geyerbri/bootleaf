@@ -210,7 +210,6 @@ var config = {
 				{"name": "Author", "alias": "Author"},
 				{"name": "Breed_Race", "alias": "Race"},
 			],
-			"visible": true,
 			"queryWidget": {
 				"queries" : [
 					{"name": "Character", "alias": "Character", "defaultOperator": "starts with"},
@@ -222,10 +221,6 @@ var config = {
 				]
 			},
 			"style": {
-				"icon": {
-					"iconUrl": "./img/dog.png",
-					"iconSize": [24,28]
-				},
 				"stroke": true,
 				"fillColor": "#00FFFF",
 				"fillOpacity": 0.5,
@@ -234,6 +229,11 @@ var config = {
 				"opacity": 1,
 				"color": '#727272'
 			},
+			"icon": {
+				"iconUrl": "./img/dog.png",
+				"iconSize": [24,28]
+			},
+			"visible": true,
 			"minZoom": 2
 		},
 		{
