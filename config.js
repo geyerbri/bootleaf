@@ -71,7 +71,7 @@ var config = {
 		},
 		{
 			"name": "ArcGIS Layers",
-			"layers" : ["trees", "counties", "railways", "us_states"]
+			"layers" : ["trees", "counties", "Puck_Map", "us_states"]
 		},
 		{
 			"name": "WMS/WFS layers",
@@ -194,7 +194,7 @@ var config = {
 			"id": "Puck_Map",
 			"name": "Puck Attributes (feature)",
 			"type": "agsFeatureLayer",
-			"cluster": false,
+			"cluster": true,
 			"showCoverageOnHover": false,
 			"removeOutsideVisibleBounds": true,
 			"url": "https://services.arcgis.com/uHAHKfH1Z5ye1Oe0/arcgis/rest/services/PuckMap/FeatureServer/0",
