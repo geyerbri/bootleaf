@@ -67,7 +67,7 @@ var config = {
 	"tocCategories": [
 		{
 			"name": "GeoJSON layers",
-			"layers": ["theatres", "museums", "us_density"]
+			"layers": ["puck", "museums", "us_density"]
 		},
 		{
 			"name": "ArcGIS Layers",
@@ -93,15 +93,15 @@ var config = {
 	},
 	"layers": [
 	{
-    "id": "theatres",
-    "name": "Theatres",
+    "id": "puck",
+    "name": "Puck",
     "type": "geoJSON",
     "cluster": true,
     "showCoverageOnHover": false,
-    "minZoom": 12,
-    "url": "./data/theatres.geojson",
+    "minZoom": 2,
+    "url": "./data/puck.geojson",
     "icon": {
-        "iconUrl": "./img/theater.png",
+        "iconUrl": "./img/dog.png",
         "iconSize": [24,28]
     },
     "style": {
@@ -114,10 +114,10 @@ var config = {
     "color": '#727272',
     },
 	  "visible": false,
-	  // "label": {
-	  // 	"name": "NAME",
-	  // 	"minZoom": 14
-	  // }
+	  "label": {
+	  	"name": "Character",
+	  "minZoom": 2
+	   }	
 	},
 	{
     "id": "museums",
