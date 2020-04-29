@@ -93,15 +93,15 @@ var config = {
 	},
 	"layers": [
 	{
-    "id": "puck",
-    "name": "Puck",
+    "id": "theatres",
+    "name": "Theatres",
     "type": "geoJSON",
     "cluster": true,
     "showCoverageOnHover": false,
-    "minZoom": 2,
-    "url": "./data/puck.geojson",
+    "minZoom": 12,
+    "url": "./data/theatres.geojson",
     "icon": {
-        "iconUrl": "./img/dog.png",
+        "iconUrl": "./img/theater.png",
         "iconSize": [24,28]
     },
     "style": {
@@ -114,10 +114,10 @@ var config = {
     "color": '#727272',
     },
 	  "visible": false,
-	  "label": {
-	  	"name": "Character",
-	  "minZoom": 2
-	   }	
+	  // "label": {
+	  // 	"name": "NAME",
+	  // 	"minZoom": 14
+	  // }
 	},
 	{
     "id": "museums",
