@@ -67,7 +67,7 @@ var config = {
 	"tocCategories": [
 		{
 			"name": "GeoJSON layers",
-			"layers": ["puck", "museums", "us_density"]
+			"layers": ["theatres", "museums", "us_density"]
 		},
 		{
 			"name": "ArcGIS Layers",
@@ -180,6 +180,48 @@ var config = {
 				]
 			},
 			"style": {
+				"stroke": true,
+		    "fillColor": "#00FFFF",
+		    "fillOpacity": 0.5,
+		    "radius": 10,
+		    "weight": 0.5,
+		    "opacity": 1,
+		    "color": '#727272'
+		  },
+			"minZoom": 7
+		},
+		{
+			"id": "Puck_Map",
+			"name": "Puck Attributes (feature)",
+			"type": "agsFeatureLayer",
+			"cluster": false,
+			"showCoverageOnHover": false,
+			"removeOutsideVisibleBounds": true,
+			"url": "https://services.arcgis.com/uHAHKfH1Z5ye1Oe0/arcgis/rest/services/PuckMap/FeatureServer/0",
+			"popup": true,
+			"tooltipField": "Species",
+			"outFields": [
+				{"type": "OID",	"name": "FID"},
+				{"name": "Character", "alias": "Character"},
+				{"name": "Species", "alias": "Species"},
+				{"name": "Location", "alias": "Location"},
+				{"name": "Class", "alias": "Class"},
+				{"name": "Gender", "alias": "Gender"},
+				{"name": "Author", "alias": "Author"},
+				{"name": "Breed_Race", "alias": "Race"},
+			],
+			"visible": true,
+			"queryWidget": {
+				"queries" : [
+					{"name": "Character", "alias": "Character", "defaultOperator": "starts with"},
+					{"name": "Species", "alias": "Species"}
+				],
+				"outFields": [
+					{"name": "Character", "alias": "Character"},
+					{"name": "Species", "alias": "Species"},
+				]
+			},
+			"style": {
 				"url": "./data/puck.geojson",
 				"icon": {
 					"iconUrl": "./img/dog.png",
@@ -193,35 +235,7 @@ var config = {
 				"opacity": 1,
 				"color": '#727272'
 			},
-			"minZoom": 7
-		},
-		{
-			"id": "railways",
-			"name": "USA Railways (feature)",
-			"type": "agsFeatureLayer",
-			"url": "https://services.arcgis.com/rOo16HdIMeOBI4Mb/ArcGIS/rest/services/USA_Rail_Network/FeatureServer/0",
-			"visible": false,
-			"minZoom": 12,
-			"useCors": false,
-			"popup": true,
-			"fields": ["FID","RROWNER1","RR_CLASS", "RAILROAD", "ABANDONED"],
-			"style": {
-				"stroke": true,
-		    "radius": 10,
-		    "weight": 2,
-		    "opacity": 1,
-		    "color": "#FF0000"
-		  },
-			"queryWidget": {
-				"queries" : [
-					{"name": "RAILROAD", "alias": "Name"}
-				],
-				"outFields": [
-					{"name": "RAILROAD", "alias": "Name"},
-					{"name": "RROWNER1", "alias": "Owner"}
-				],
-				"maxAllowableOffset": 10
-			}
+			"minZoom": 2
 		},
 		{
 			"id": "counties",
