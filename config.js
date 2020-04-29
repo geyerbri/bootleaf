@@ -220,7 +220,7 @@ var config = {
 					{"name": "Species", "alias": "Species"},
 				]
 			},
-			"style": {
+/*			"style": {
 				"stroke": true,
 				"fillColor": "#00FFFF",
 				"fillOpacity": 0.5,
@@ -228,12 +228,13 @@ var config = {
 				"weight": 0.5,
 				"opacity": 1,
 				"color": '#727272'
-			},
+			},*/
 			"icon": {
 				"iconUrl": "./img/dog.png",
 				"iconSize": [24,28]
 			},
 			"visible": true,
+//			"showOnTop": true,
 			"minZoom": 2
 		},
 		{
